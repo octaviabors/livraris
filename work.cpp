@@ -19,3 +19,9 @@ else if(formatChunk->audioFormat == WavAudioFormat::IeeeFloat) {
         return;
     }
 //yes
+  /* Fix the data endianness */
+    if(hasBigEndianData != Utility::Endianness::isBigEndian()) {
+        if(formatChunk->bitsPerSample == 16)
+            Utility::Endianness::swapInPlace(Containers::arrayCast<std::uint16_t>(*_data));
+        else if(formatChunk->bitsPerSample == 32)
+            Utility::Endianness::swapInPlace(Containers::arrayCast<std::uint32_t>(*_data));
