@@ -18,3 +18,4 @@ else if(formatChunk->audioFormat == WavAudioFormat::IeeeFloat) {
         Error() << "Audio::WavImporter::openData(): the file is corrupted";
         return;
     }
+//yes
